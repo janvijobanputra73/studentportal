@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Welcome to HOD</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    </head>
+    <body>
+        <style>
+            body {
+              background-image: url("{% static 'images/pic7.jpg' %}");
+            }
+        </style>
+        <br>
+        <br>
+        <br>
+        <br>
+      {% comment %} side navbar start {% endcomment %}
+        <nav class="navbar bg-light fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome HOD</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">HOD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="/myprofile">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/about">About</a>
+              </li>
+                </ul>
+                
+              </div>
+            </div>
+          </div>
+       </nav>
+      {% comment %}side navbar end  {% endcomment %}
+
+        <center><h1> <u>-*User Signup Information*-</u></h1></center><br>
+        <table class="table" >
+          <tr class="table-dark">
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Username</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Role</th>
+            <th>Action</th>
+          </tr> 
+          {% for st in stdata %} 
+          <tr class="table-light">
+            <td>{{st.id}}</td>
+            <td>{{st.firstname}}</td>
+            <td>{{st.lastname}}</td>
+            <td>{{st.username}}</td>
+            <td>{{st.city}}</td>
+            <td>{{st.state}}</td>
+            <td>{{st.zipcode}}</td>
+            <td>{{st.role}}</td>
+            <td><a href="/deletedata/{{st.id}}" class="btn btn-danger">Delete</a></td>
+          </tr>  
+          {% endfor %}
+
+
+        </table>
+        <br>
+        <center><h1> <u>-*Student Information*-</u></h1></center><br>
+        <table class="table" >
+          <tr class="table-dark">
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Standard</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Enrollment No</th>
+            <th>Zip</th>
+            <th>Your photo</th>
+            <th>Action</th>
+          </tr>
+          {% for st in studdata %} 
+          <tr class="table-light">
+            <td>{{st.id}}</td>
+            <td>{{st.stname}}</td>
+            <td>{{st.lastname}}</td>
+            <td>{{st.ststd}}</td>
+            <td>{{st.stcity}}</td>
+            <td>{{st.state}}</td>
+            <td>{{st.enrno}}</td>
+            <td>{{st.zipcode}}</td>
+            <td>{{st.stphoto}}</td>
+            <td><a href="/deletedata/{{st.id}}" class="btn btn-danger">Delete</a></td>
+          </tr>  
+          {% endfor %}
+        </table>
+
+        <br>
+        <center><h1> <u>-*Staff Information*-</u></h1></center><br>
+        <table class="table" >
+          <tr class="table-dark">
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Subject</th>
+            <th>Standard</th>
+            <th>City</th>
+            <th>Your photo</th>
+            <th>Phone number</th>
+            <th>Address</th>
+            <th>Experience</th>
+            <th>Action</th>
+          </tr>
+          {% for staff in staffdata %} 
+          <tr class="table-light">
+            <td>{{staff.id}}</td>
+            <td>{{staff.stafffn}}</td>
+            <td>{{staff.staffln}}</td>
+            <td>{{staff.staffsub}}</td>
+            <td>{{staff.staffstd}}</td>
+            <td>{{staff.staffcity}}</td>
+            <td>{{staff.staffphoto}}</td>
+            <td>{{staff.phno}}</td>
+            <td>{{staff.address}}</td>
+            <td>{{staff.experience}}</td>
+            <td><a href="/deletedata/{{staff.id}}" class="btn btn-danger">Delete</a></td>
+          </tr>  
+          {% endfor %}
+        </table>
+         
+    </body>
+</html>
